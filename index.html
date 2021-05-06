@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megamailer :-)</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to Megamailer!</h1>
+    <p>This is not very sophisticated: It takes a CSV-style set of variables and does a mail-merge on the fields for recipient, subject and email body.</p>
+    <p>The messages that are generated in this way are passed on to your default email app. Within that app, you'll still have to send each email manually.</p>
+    <p>This tool is therefore not very useful for really big email campaigns. But for smaller sizes, it should work fine and it allows you to check each email separately.</p>
+    <p>By the way: This page does not send any of the data you enter here anywhere - it lets your email app do that instead.</p>
+    <p>Use the <a href="javascript:fillSampleData()">sample data</a> to understand how to use the <kbd>%variables%</kbd>.</p>
+    <h2>Setup</h2>
+    <div id="setup">
+      <form name="setup" action="javascript:preview()">
+        <div class="form-group">
+          <label for="variables">Variables (comma-separated, variable names in the first row, add "quotes" or don't):</label><br />
+          <textarea name="variables" id="variables" class="form-control" rows="10" cols="100"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Recipient:</label><br />
+          <input name="recipient" id="recipient" class="form-control" size="100" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject:</label><br />
+          <input type="text" name="subject" class="form-control" id="subject" size="100" />
+        </div>
+        <div class="form-group">
+          <label for="body">Text body:</label><br /><textarea name="body" class="form-control" id="body" rows="20" cols="100"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Preview/refresh preview" />
+        <input type="button" class="btn btn-primary" value="Load emails into your default email app" onclick="sendHandler()" />
+      </form>
+    </div>
+    <h2>Preview</h2>
+    <div id="preview">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
